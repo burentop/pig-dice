@@ -6,8 +6,29 @@ function Player(name) {
 
 Player.prototype.randomRoll = function() {
   var roll = Math.floor(Math.random() * 6) + 1;
-  this.roundScore += roll;
+  if (roll > 1) {
+    this.roundScore += roll;
+  } else {
+    this.roundScore = 0;
+  }
   return roll;
+}
+
+Player.prototype.addRoundToFinal = function() {
+  this.finalScore += this.roundScore;
+  this.roundScore = 0;
+}
+
+var checkScores = function(player1, player2) {
+  if (player1.finalScore >= 100) {
+    $(".during-play").toggle();
+    $("#winner").text(player1.name);
+    $(".after-play").show();
+  } else if (player2.finalScore >= 100) {
+    $(".during-play").toggle();
+    $("#winner").text(player2.name);
+    $(".after-play").show();
+  }
 }
 
 $(document).ready(function() {
@@ -31,7 +52,45 @@ $(document).ready(function() {
       event.preventDefault();
       var playerOneRoll = playerOne.randomRoll();
       $("#player-one-roll-display").text(playerOneRoll);
+      if (playerOneRoll === 1) {
+        $("#player-one-round-score").text(0);
+        $(".player-one-buttons").toggle();
+        $(".player-two-buttons").toggle();
+        checkScores(playerOne, playerTwo);
+      } else {
+        $("#player-one-round-score").text(playerOne.roundScore);
+      }
+    });
+    $("form#player-two-roll").submit(function(event) {
+      event.preventDefault();
+      var playerTwoRoll = playerTwo.randomRoll();
+      $("#player-two-roll-display").text(playerTwoRoll);
+      if (playerTwoRoll === 1) {
+        $("#player-two-round-score").text(0);
+        $(".player-two-buttons").toggle();
+        $(".player-one-buttons").toggle();
+        checkScores(playerOne, playerTwo);
+      } else {
+        $("#player-two-round-score").text(playerTwo.roundScore);
+      }
+    });
+    $("form#player-one-hold").submit(function(event) {
+      event.preventDefault();
+      playerOne.addRoundToFinal();
       $("#player-one-round-score").text(playerOne.roundScore);
+      $("#player-one-total-score").text(playerOne.finalScore);
+      $(".player-one-buttons").toggle();
+      $(".player-two-buttons").toggle();
+      checkScores(playerOne, playerTwo);
+    });
+    $("form#player-two-hold").submit(function(event) {
+      event.preventDefault();
+      playerTwo.addRoundToFinal();
+      $("#player-two-round-score").text(playerTwo.roundScore);
+      $("#player-two-total-score").text(playerTwo.finalScore);
+      $(".player-two-buttons").toggle();
+      $(".player-one-buttons").toggle();
+      checkScores(playerOne, playerTwo);
     });
   });
 });
