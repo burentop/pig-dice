@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-3.1.1.js"></script>
+    <script src="js/scripts.js"></script>
+    <title>Pig Dice</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="well">
+        <h2>Play the game of Pig</h2>
+        <p>Enter the names of the 2 players and then press 'Play'.</p>
+        <p>Game play: When it is your turn, click roll and then the die number is added to your Round Score.</p>
+        <p>You may roll as many times as you want, and your Round Score will continue to increase.</p>
+        <p>The Round Score is not added to your Final Score until you click 'Hold', ending your turn.</p>
+        <p>If you roll a '1' your turn ends with Zero points added to your Final Score. First player to 100 wins the game.</p>
+      </div>
+      <div class="row player-names">
+        <div class="col-md-5 well">
+          <h3>Enter the player names:</h3>
+          <form id="new-game" class="form-group">
+            <div class="form-group">
+              <label for="player-one">Player 1:</label>
+              <input type="text" class="form-control" id="player-one">
+            </div>
+            <div class="form-group">
+              <label for="player-two">Player 2:</label>
+              <input type="text" class="form-control" id="player-two">
+            </div>
+            <button type="submit" class="btn">Submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="row during-play">
+        <div class="col-md-5 well">
+          <h2 id="player-one-heading">Player 1</h2>
+          <h3>Round Score: <span id="player-one-round-score"></span></h3>
+          <div class="row">
+            <button id="player-one-roll" class="col-md-5 play-button">Roll</button>
+            <button id="player-one-hold" class="col-md-5 play-button">Hold</button>
+          </div>
+          <h3>Total Score: <span id="player-one-total-score"></span></h3>
+        </div>
+        <div class="col-md-5 well">
+          <h2 id="player-two-heading">Player 2</h2>
+          <h3>Round Score: <span id="player-two-round-score"></span></h3>
+          <div class="row">
+            <button id="player-two-roll" class="col-md-5 play-button">Roll</button>
+            <button id="player-two-hold" class="col-md-5 play-button">Hold</button>
+          </div>
+          <h3>Total Score: <span id="player-two-total-score"></span></h3>
+        </div>
+      </div>
+      <div class="well after-play">
+        <h1><span id="winner"></span> wins!!</h1>
+      </div>
+    </div>
+  </body>
+</html>
