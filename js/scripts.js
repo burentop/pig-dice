@@ -1,6 +1,13 @@
 function Player(name) {
   this.name = name;
-  this.score = 0;
+  this.finalScore = 0;
+  this.roundScore = 0;
+}
+
+Player.prototype.randomRoll = function() {
+  var roll = Math.floor(Math.random() * 6) + 1;
+  this.roundScore += roll;
+  return roll;
 }
 
 $(document).ready(function() {
@@ -14,10 +21,17 @@ $(document).ready(function() {
 
     $("#player-one-heading").text(playerOne.name);
     $("#player-two-heading").text(playerTwo.name);
-    $("#player-one-round-score").text(0);
-    $("#player-two-round-score").text(0);
-    $("#player-one-total-score").text(playerOne.score);
-    $("#player-two-total-score").text(playerTwo.score);
+    $("#player-one-round-score").text(playerOne.roundScore);
+    $("#player-two-round-score").text(playerOne.roundScore);
+    $("#player-one-total-score").text(playerOne.finalScore);
+    $("#player-two-total-score").text(playerTwo.finalScore);
     $(".during-play").show();
+
+    $("form#player-one-roll").submit(function(event) {
+      event.preventDefault();
+      var playerOneRoll = playerOne.randomRoll();
+      $("#player-one-roll-display").text(playerOneRoll);
+      $("#player-one-round-score").text(playerOne.roundScore);
+    });
   });
 });

@@ -36,19 +36,29 @@
       <div class="row during-play">
         <div class="col-md-5 well">
           <h2 id="player-one-heading">Player 1</h2>
+          <h3>Roll: <span id="player-one-roll-display"></span></h3>
           <h3>Round Score: <span id="player-one-round-score"></span></h3>
           <div class="row player-one-buttons">
-            <button id="player-one-roll" class="col-md-5 play-button">Roll</button>
-            <button id="player-one-hold" class="col-md-5 play-button">Hold</button>
+            <form id="player-one-roll">
+              <button class="col-md-5 roll-button" type="submit">Roll</button>
+            </form>
+            <form id="player-one-hold">
+              <button class="col-md-5 hold-button" type="submit">Hold</button>
+            </form>
           </div>
           <h2>Total Score: <span id="player-one-total-score"></span></h2>
         </div>
         <div class="col-md-5 well">
           <h2 id="player-two-heading">Player 2</h2>
+          <h3>Roll: <span id="player-two-roll-display"></span></h3>
           <h3>Round Score: <span id="player-two-round-score"></span></h3>
           <div class="row player-two-buttons">
-            <button id="player-two-roll" class="col-md-5 play-button">Roll</button>
-            <button id="player-two-hold" class="col-md-5 play-button">Hold</button>
+            <form id="player-two-roll">
+              <button class="col-md-5 roll-button" type="submit">Roll</button>
+            </form>
+            <form id="player-two-hold">
+              <button class="col-md-5 hold-button" type="submit">Hold</button>
+            </form>
           </div>
           <h2>Total Score: <span id="player-two-total-score"></span></h2>
         </div>
