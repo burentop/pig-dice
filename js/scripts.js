@@ -9,6 +9,7 @@ Player.prototype.randomRoll = function(numDice) {
     var roll = Math.floor(Math.random() * 6) + 1;
     if (roll > 1) {
       this.roundScore += roll;
+      return roll;
     } else {
       this.roundScore = 0;
       return 1;
@@ -18,12 +19,12 @@ Player.prototype.randomRoll = function(numDice) {
     var roll2 = Math.floor(Math.random() * 6) + 1;
     if (roll1 > 1 && roll2 > 1) {
       this.roundScore += (roll1 + roll2);
+      return roll1 + roll2;
     } else {
       this.roundScore = 0;
       return 1;
     }
   }
-  return roll1 + roll2;
 }
 
 Player.prototype.addRoundToFinal = function() {
