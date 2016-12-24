@@ -17,19 +17,36 @@
         <p>The Round Score is not added to your Final Score until you click 'Hold', ending your turn.</p>
         <p>If you roll a '1' your turn ends with Zero points added to your Final Score. First player to 100 wins the game.</p>
       </div>
-      <div class="row player-names">
-        <div class="col-md-5 well">
-          <h3>Enter the player names:</h3>
+      <div class="row player-names well">
+        <div id="game-setup">
           <form id="new-game" class="form-group">
-            <div class="form-group">
-              <label for="player-one">Player 1:</label>
-              <input type="text" class="form-control" id="player-one">
+            <div class="col-md-6">
+              <h3>Enter the player names:</h3>
+              <div class="form-group">
+                <label for="player-one">Player 1:</label>
+                <input type="text" class="form-control" id="player-one">
+              </div>
+              <div class="form-group">
+                <label for="player-two">Player 2:</label>
+                <input type="text" class="form-control" id="player-two">
+              </div>
             </div>
-            <div class="form-group">
-              <label for="player-two">Player 2:</label>
-              <input type="text" class="form-control" id="player-two">
+            <div class="col-md-6">
+              <h3>Choose Game Type:</h3>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="dice" value="1">
+                  One die
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="dice" value="2">
+                  Two dice
+                </label>
+              </div>
             </div>
-            <button type="submit" class="btn">Submit</button>
+            <button id="game-setup-submit" type="submit" class="btn">Submit</button>
           </form>
         </div>
       </div>
